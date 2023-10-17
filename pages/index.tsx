@@ -4,46 +4,36 @@ import { useSpring, animated } from 'react-spring';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const svgs = [
-  '/carrossel/CenterDesenrolarPRO.svg',
-  '/carrossel/CenterPRO.svg',
-  '/carrossel/DashBoardPRO.svg',
-  '/carrossel/IDPRO.svg',
-  '/carrossel/ItemDesenrolarPRO.svg',
-  '/carrossel/Onboard 1PRO.svg',
-  '/carrossel/Onboard 2PRO.svg',
-  '/carrossel/Onboard 3PRO.svg'
+const pngs = [
+  '/carrossel/Onboard 1.png',
+  '/carrossel/Onboard 2.png',
+  '/carrossel/Onboard 3.png',
+  '/carrossel/Dashboard.png',
+  '/carrossel/ID.png',
+  '/carrossel/Center.png',
+  '/carrossel/CenterDesenrolar.png',
+  '/carrossel/ItemDesenrolar.png',
 ];
 
 function Home() {
-  const springProps = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    delay: 500,
-  });
+  const springProps = useSpring({ from: { opacity: 0 }, to: { opacity: 1 }, delay: 500 });
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % svgs.length);
+      setCurrentIndex(prevIndex => (prevIndex + 1) % pngs.length);
     }, 10000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-900 text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen py-4 md:py-10 px-4 md:px-10 bg-gray-900 text-white">
       <animated.div style={springProps}>
-        <h1 className="text-6xl md:text-9xl lg:text-10xl font-bold my-10 text-center px-3">
-          Desenrola IFSC
+        <h1 className="text-4xl md:text-8xl lg:text-8xl font-bold my-10 text-center px-3 bg-gray-800 rounded p-3 mx-auto">
+          Experiência de UX/UI no Desenrola IFSC
         </h1>
       </animated.div>
-
-      <div className="mb-10">
-        <animated.div style={springProps}>
-          <Image src="/4logo.png" alt="Logo" width={300} height={300} className="block mx-auto lg:w-1/3" />
-        </animated.div>
-      </div>
 
       <Carousel
         autoPlay
@@ -53,27 +43,52 @@ function Home() {
         interval={10000}
         selectedItem={currentIndex}
       >
-        {svgs.map((svg, index) => (
-          <div key={index}>
+        {pngs.map((png, index) => (
+          <div key={index} className="h-full w-full flex justify-center items-center">
             <animated.div style={springProps}>
-              <Image src={svg} alt={`Carrossel Item ${index + 1}`} width={300} height={300} />
+              <Image src={png} alt={`Carrossel Item ${index + 1}`} width={800} height={800} className="object-contain" />
             </animated.div>
           </div>
         ))}
       </Carousel>
 
-      <animated.div style={springProps}>
+      <h2 className="mt-10 text-4xl md:text-6xl lg:text-6xl font-bold text-center px-3 bg-gray-800 rounded p-3 mx-auto">
+        Foco na Experiência e Interface do Usuário
+      </h2>
+
+      <p className="mt-6 text-lg md:text-xl lg:text-xl text-center px-3 bg-gray-800 rounded p-3 mx-auto">
+        Nossa abordagem de design centrada no usuário garante uma navegação engajadora e imersiva, além de uma interface intuitiva, agradável e totalmente voltada às necessidades dos usuários de dispositivos móveis.
+      </p>
+
+      <p className="mt-6 text-lg md:text-xl lg:text-xl text-center px-3 bg-gray-800 rounded p-3 mx-auto">
+        A Desenrola IFSC não é apenas mais um aplicativo. É uma experiência envolvente, útil, inovadora e feita para simplificar e organizar a vida acadêmica dos estudantes. Informações essenciais da rotina acadêmica estão agora em um único lugar – tornando a experiência acadêmica mais leve, inclusiva e eficiente.
+      </p>
+
+      <p className="mt-6 text-lg md:text-xl lg:text-xl text-center px-3 bg-gray-800 rounded p-3 mx-auto">
+        Temos uma solução segura para a identificação do usuário. A funcionalidade ID transforma o smartphone de cada aluno em uma carteirinha digital, a qual contém seus dados de identificação. Ela permite ser usada para acesso não só ao campus, como também para recursos e eventos.
+      </p>
+
+      <animated.div style={springProps} className="mt-10 mb-5 w-full px-8">
         <a
           href="https://forms.gle/ZxRnB9WiTAWvr9638"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white bg-red-500 hover:bg-red-600 px-5 py-3 rounded-lg shadow-lg text-lg lg:text-2xl font-bold transition-colors duration-200"
+          className="text-white bg-red-600 hover:bg-red-700 px-5 py-3 rounded-lg shadow-lg text-lg lg:text-2xl font-bold transition-colors duration-200 block w-full text-center"
         >
           Acessar Formulário
+        </a>
+      </animated.div>
+      <animated.div style={springProps} className="mb-10 w-full px-8">
+        <a
+          href="https://forms.gle/ZTAc3Kh8wFeWjjH66"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white bg-red-600 hover:bg-red-700 px-5 py-3 rounded-lg shadow-lg text-lg lg:text-2xl font-bold transition-colors duration-200 block w-full text-center"
+        >
+          Sugestão
         </a>
       </animated.div>
     </div>
   );
 }
-
 export default Home;
