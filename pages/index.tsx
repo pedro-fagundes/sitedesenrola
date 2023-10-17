@@ -7,7 +7,7 @@ const pngs = [
   '/carrossel/Onboard 1.png',
   '/carrossel/Onboard 2.png',
   '/carrossel/Onboard 3.png',
-  '/carrossel/Dashboard.png',
+  '/carrossel/DashBoard.png',
   '/carrossel/ID.png',
   '/carrossel/Center.png',
   '/carrossel/CenterDesenrolar.png',
