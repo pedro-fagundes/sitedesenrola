@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useSpring, animated } from 'react-spring';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -16,8 +15,6 @@ const pngs = [
 ];
 
 function Home() {
-  const springProps = useSpring({ from: { opacity: 0 }, to: { opacity: 1 }, delay: 500 });
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -29,11 +26,11 @@ function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-4 md:py-10 px-4 md:px-10 bg-gray-900 text-white">
-      <animated.div style={springProps}>
+      <div>
         <h1 className="text-4xl md:text-8xl lg:text-8xl font-bold my-10 text-center px-3 bg-gray-800 rounded p-3 mx-auto">
           Experiência de UX/UI no Desenrola IFSC
         </h1>
-      </animated.div>
+      </div>
 
       <Carousel
         autoPlay
@@ -45,9 +42,9 @@ function Home() {
       >
         {pngs.map((png, index) => (
           <div key={index} className="h-full w-full flex justify-center items-center">
-            <animated.div style={springProps}>
+            <div>
               <Image src={png} alt={`Carrossel Item ${index + 1}`} width={800} height={800} className="object-contain" />
-            </animated.div>
+            </div>
           </div>
         ))}
       </Carousel>
@@ -68,7 +65,7 @@ function Home() {
         Temos uma solução segura para a identificação do usuário. A funcionalidade ID transforma o smartphone de cada aluno em uma carteirinha digital, a qual contém seus dados de identificação. Ela permite ser usada para acesso não só ao campus, como também para recursos e eventos.
       </p>
 
-      <animated.div style={springProps} className="mt-10 mb-5 w-full px-8">
+      <div className="mt-10 mb-5 w-full px-8">
         <a
           href="https://forms.gle/ZxRnB9WiTAWvr9638"
           target="_blank"
@@ -77,8 +74,8 @@ function Home() {
         >
           Acessar Formulário
         </a>
-      </animated.div>
-      <animated.div style={springProps} className="mb-10 w-full px-8">
+      </div>
+      <div className="mb-10 w-full px-8">
         <a
           href="https://forms.gle/ZTAc3Kh8wFeWjjH66"
           target="_blank"
@@ -87,7 +84,7 @@ function Home() {
         >
           Sugestão
         </a>
-      </animated.div>
+      </div>
     </div>
   );
 }
