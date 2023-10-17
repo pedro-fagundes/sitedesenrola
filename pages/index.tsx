@@ -37,12 +37,12 @@ function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-4 xl:py-16 px-4 xl:px-20 bg-gray-900 text-white">
       <div>
-        <h1 className="text-4xl xl:text-7xl font-bold my-8 xl:my-16 text-center px-4 xl:px-20 bg-indigo-800 rounded p-2 xl:p-4 mx-auto shadow-2xl">
+        <h1 className="text-4xl xl:text-7xl font-bold my-2.5 text-center px-4 xl:px-20 bg-indigo-800 rounded p-2 xl:p-4 mx-auto shadow-2xl">
           Experiência UX/UI
         </h1>
       </div>
 
-      <div className="m-10">
+      <div className="mb-10 mr-10 ml-10">
         <Carousel
           autoPlay
           infiniteLoop
