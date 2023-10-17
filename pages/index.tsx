@@ -42,31 +42,33 @@ function Home() {
       </h1>
     </div>
 
-      <Carousel
-        autoPlay
-        infiniteLoop
-        showThumbs={false}
-        showStatus={false}
-        showArrows={false}
-        interval={10000000}
-        selectedItem={currentIndex}
-        swipeScrollTolerance={30}
-      >
-        {pngs.map((png, index) => (
-          <div key={index} className="h-full w-full flex justify-center items-start">
-            <div className="shadow-lg  mb-16 pl-5 pr-5 ">
-              <Image
-                src={png}
-                alt={`Carrossel Item ${index + 1}`}
-                width={800}
-                height={800}
-                objectFit="contain"
-                className='rounded-lg'
-              />
+      <div className="m-10">
+        <Carousel
+          autoPlay
+          infiniteLoop
+          showThumbs={false}
+          showStatus={false}
+          showArrows={false}
+          interval={10000000}
+          selectedItem={currentIndex}
+          swipeScrollTolerance={30}
+        >
+          {pngs.map((png, index) => (
+            <div key={index} className="h-full w-full flex justify-center items-start">
+              <div className="shadow-lg  mb-16 pl-5 pr-5 ">
+                <Image
+                  src={png}
+                  alt={`Carrossel Item ${index + 1}`}
+                  width={800}
+                  height={800}
+                  objectFit="contain"
+                  className='rounded-lg'
+                />
+              </div>
             </div>
-          </div>
-        ))}
-      </Carousel>
+          ))}
+        </Carousel>
+      </div>
 
       <h2 className="mt-10 text-4xl md:text-6xl lg:text-6xl font-bold text-center px-3 bg-indigo-800 rounded p-3 mx-auto shadow-lg">
         Foco na Experiência e Interface do Usuário
