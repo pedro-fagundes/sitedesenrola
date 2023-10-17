@@ -17,12 +17,23 @@ const pngs = [
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolling(true);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex(prevIndex => (prevIndex + 1) % pngs.length);
+      if (!scrolling) {
+        setCurrentIndex(prevIndex => (prevIndex + 1) % pngs.length);
+      }
     }, 10000);
     return () => clearInterval(timer);
-  }, []);
+  }, [scrolling]);
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-4 md:py-10 px-4 md:px-10 bg-gray-900 text-white">      <div>
