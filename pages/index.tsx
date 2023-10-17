@@ -49,13 +49,16 @@ function Home() {
           showThumbs={false}
           showStatus={false}
           showArrows={false}
-          interval={10000000}
+          interval={10000}
           selectedItem={currentIndex}
           swipeScrollTolerance={30}
+          dynamicHeight={true}
+          showIndicators={false}
+
         >
           {pngs.map((png, index) => (
             <div key={index} className="h-full w-full flex justify-center items-start">
-              <div className="shadow-lg  mb-16 pl-5 pr-5 ">
+              <div className="shadow-lg  pl-5 pr-5 pb-16 ">
                 <Image
                   src={png}
                   alt={`Carrossel Item ${index + 1}`}
