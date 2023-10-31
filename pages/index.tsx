@@ -19,6 +19,20 @@ function Home() {
 
   const [scrolling, setScrolling] = useState(false);
 
+  const [showArrows, setShowArrows] = useState(false);
+
+  useEffect(() => {
+    const checkArrowsVisibility = () => {
+      const desktopView = window.innerWidth >= 1024;
+      setShowArrows(desktopView)
+    };
+
+    window.addEventListener('resize', checkArrowsVisibility);
+    checkArrowsVisibility();
+    return () => window.removeEventListener('resize', checkArrowsVisibility);
+  }, []);
+
+
   useEffect(() => {
     const handleScroll = () => setScrolling(true);
     window.addEventListener('scroll', handleScroll);
@@ -48,7 +62,7 @@ function Home() {
           infiniteLoop
           showThumbs={false}
           showStatus={false}
-          showArrows={false}
+          showArrows={showArrows}
           interval={10000}
           selectedItem={currentIndex}
           swipeScrollTolerance={30}
